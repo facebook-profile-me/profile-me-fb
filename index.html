@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Network</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #2196F3;
+            margin-bottom: 20px;
+        }
+        .network-button {
+            display: block;
+            width: 200px;
+            padding: 15px;
+            margin: 10px auto;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .network-button:hover {
+            background-color: #e0e0e0;
+        }
+        .dialog { background-color: #ff0000; }
+        .mobitel { background-color: #4CAF50; }
+        .airtel { background-color: #ff0000; }
+        .hutch { background-color: #FF5722; }
+        .shape {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background-color: #2196F3;
+            border-top-left-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select Your Network</h1>
+        
+        <!-- Linking all buttons to pay.html -->
+        <a href="pay.html" class="network-button dialog">Dialog</a>
+        <a href="pay.html" class="network-button mobitel">Mobitel</a>
+        <a href="pay.html" class="network-button airtel">Airtel</a>
+        <a href="pay.html" class="network-button hutch">Hutch</a>
+    </div>
+    <div class="shape"></div>
+</body>
+</html>
