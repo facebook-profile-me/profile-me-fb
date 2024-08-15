@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Number Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+            position: relative;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background-color: #007bff;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        h2 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            display: none;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        #loading-text, #continue-with-email {
+            display: none;
+            font-size: 14px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        #continue-with-email {
+            font-size: 16px;
+            color: #333;
+            margin-top: 20px;
+        }
+        #continue-with-email a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Enter your mobile number</h2>
+        <input type="text" id="mobileNumber" placeholder="Mobile number">
+        <div class="error-message" id="error-message">Mobile number is required</div>
+        <div id="loading-text">
+            <span class="loading-spinner"></span>
+            Verifying...
+        </div>
+        <button id="verifyButton" onclick="verify()">Verify</button>
+        <div id="continue-with-email"> <a href="login.html">Continue with Facebook</a></div>
+    </div>
+
+    <script>
+        function verify() {
+            var mobileNumber = document.getElementById("mobileNumber").value;
+            var errorMessage = document.getElementById("error-message");
+            var button = document.getElementById("verifyButton");
+            var loadingText = document.getElementById("loading-text");
+            var continueWithEmail = document.getElementById("continue-with-email");
+
+            // Validation: Check if the mobile number field is empty
+            if (mobileNumber.trim() === "") {
+                errorMessage.style.display = "block";
+                return; // Stop further execution
+            } else {
+                errorMessage.style.display = "none"; // Hide the error message
+            }
+
+            // Disable the button immediately after the first click
+            button.disabled = true;
+            button.textContent = "Please wait...";
+
+            // Show the loading animation
+            loadingText.style.display = "block";
+
+            // Simulate a delay (e.g., API call)
+            setTimeout(function() {
+                // Hide the loading animation
+                loadingText.style.display = "none";
+                
+                // Show the "Continue with email" message
+                continueWithEmail.style.display = "block";
+
+                // Keep the Verify button disabled
+                button.textContent = "Verified";
+
+                // Ensure the Verify button remains disabled
+                button.disabled = true;
+            }, 2000); // 2 seconds delay
+        }
+    </script>
+</body>
+</html>
